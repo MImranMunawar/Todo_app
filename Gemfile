@@ -70,3 +70,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+gem "searchkick", "~> 5.1"
+gem "elasticsearch", "~> 7.17.7"

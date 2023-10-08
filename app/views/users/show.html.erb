@@ -1,0 +1,15 @@
+<h1>Profile page </h1>
+
+<%= form_with model: @user do |f| %>
+<%= f.label :username %><br>
+  <%= f.text_field :username, readonly: true %><br>
+
+<%= f.label :email %><br>
+  <%= f.text_field :email, readonly: true %><br>
+
+  <%= f.label :date_of_birth %><br>
+  <%= f.text_field :date_of_birth, readonly: true %><br>
+
+<%= f.label :phone_number %><br>
+  <%= f.text_field :phone_number, readonly: true %><br>
+<% end %>

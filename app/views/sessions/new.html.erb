@@ -1,18 +1,33 @@
 <h1>Sign In </h1>
 <%=form_with url: sign_in_path do |form| %>
 
+  <div class="mb-3">
+    <%= form.label :username %>
+    <%= form.text_field :username, class:"form-control", placeholder: "Name" %>
+  </div>
 
-<div class="mb-3">
-<%= form.label :email %>
-<%= form.text_field :email, class:"form-control", placeholder: "imran123@.com" %>
-</div>
-<div class="mb-3">
-<%= form.label :password%>
-<%= form.password_field :password, class: "form-control", placeholder:"password" %>
-<%= link_to "Forgot your password?", password_reset_path %>
-</div>
+  <div class="mb-3">
+    <%= form.label :email %>
+    <%= form.text_field :email, class:"form-control", placeholder:"tahir123@.com" %>
+  </div>
 
-<div class="mb-3">
-<%=form.submit "Sign In", class: "btn btn-primary"%>
-</div>
+ <div class="mb-3">
+    <%= form.label :date_of_birth %>
+    <%= form.text_field :date_of_birth, class:"form-control", placeholder: "Date of birth" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number, class:"form-control", placeholder: "0424643466" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password%>
+    <%= form.password_field :password, class: "form-control", placeholder:"password" %>
+    <%= link_to "Forgot your password?", password_reset_path %>
+  </div>
+
+ <div class="mb-3">
+   <%= form.submit "Sign In", class: "btn btn-primary" %>
+ </div>
 <% end %>

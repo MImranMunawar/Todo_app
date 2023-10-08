@@ -1,16 +1,30 @@
 <h1> Sign Up</h1>
-<%= form_with model: @user, url: sign_up_path do |form| %>
-  <% if form.object.errors.any? %>
-    <div class="alert alert-danger">
-      <% form.object.errors.full_messages.each do |message|%>
-        <div><%= message %></div>
-      <% end %>
-    </div>
+  <%= form_with model: @user, url: sign_up_path do |form| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message|%>
+          <div><%= message %></div>
+        <% end %>
+      </div>
   <% end %>
 
   <div class="mb-3">
+    <%= form.label :username%>
+    <%= form.text_field :username, class: "form-control", placeholder:"name" %>
+  </div>
+
+  <div class="mb-3">
     <%= form.label :email %>
-    <%= form.text_field :email, class:"form-control", placeholder: "imran123@.com" %>
+    <%= form.text_field :email, class:"form-control", placeholder: "tahir345@.com" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :date_of_birth%>
+    <%= form.text_field :date_of_birth, class: "form-control", placeholder:"date of birth" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :phone_number%>
+    <%= form.text_field :phone_number, class: "form-control", placeholder:"0427655675" %>
   </div>
 
   <div class="mb-3">
