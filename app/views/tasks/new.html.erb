@@ -36,6 +36,12 @@
     <%= f.select :priority, [['High', 'high'], ['Medium', 'medium'], ['Low', 'low']], {}, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+  <%= f.label :assigned_user_ids, "Assign Users", class: "d-block" %>
+  <%= f.select :assigned_user_ids, User.all.collect { |u| [u.name, u.id] }, {}, multiple: true, class: "form-control" %>
+</div>
+
+
   <%= f.submit "Create Task", class: "btn btn-primary" %>
 <% end %>
 

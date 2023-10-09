@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_user
-
-    def set_current_user
-      if session[:user_id]
-      Current.user = User.find_by(id:session[:user_id])
+  def set_current_user
+    puts "Current User: #{current_user.inspect}"
+  end
+  def set_current_user
+    if session[:user_id]
+    Current.user = User.find_by(id:session[:user_id])
     end
   end
 

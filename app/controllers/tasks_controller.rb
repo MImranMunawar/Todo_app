@@ -23,9 +23,10 @@ class TasksController < ApplicationController
   def update
    @task = Task.find(params[:id])
     if @task.update(task_params)
+      assign_users_to_task
      redirect_to tasks_path, notice: 'Task updated successfully'
     else
-      render 'new'
+      render 'edit'
     end
   end
 
@@ -35,15 +36,16 @@ class TasksController < ApplicationController
 
   def create
     if params[:task][:status] == 'incomplete'
-    @task = Task.new(task_params)
-    if @task.save
+     @task = Task.new(task_params)
+     if @task.save
+       assign_users_to_task
       redirect_to tasks_path, notice: 'Task created successfully'
-    else
-      logger.debug @task.errors.full_messages
-      render 'new'
+     else
+       logger.debug @task.errors.full_messages
+       render 'new'
+      end
     end
   end
-end
 
   def destroy
     @task = Task.find(params[:id])
@@ -55,6 +57,13 @@ end
   def task_params
     params.require(:task).permit(:title, :description, :due_date, :status, :priority)
   end
-end
 
+ def assign_users_to_task
+  if params[:task][:assigned_user_ids].present?
+    @task.assigned_user_ids = params[:task][:assigned_user_ids]
+   else
+     @task.assigned_user_ids = []
+   end
+  end
+end
 
